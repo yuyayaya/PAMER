@@ -1,3 +1,3 @@
 # README
 
-PAMER
+PAMER2
