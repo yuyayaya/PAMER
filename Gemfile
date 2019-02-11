@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails',        '5.1.6'
 gem 'sassc-rails'
+gem 'mini_racer'
 gem 'bootstrap', '4.2.1'
 gem 'puma',         '3.9.1'
 gem 'sass-rails',   '5.0.6'

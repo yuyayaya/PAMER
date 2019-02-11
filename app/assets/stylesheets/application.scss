@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
+ @import "bootstrap";
+
+ /* header */
+
+ #logo {
+   float: left;
+   margin-right: 10px;
+   font-size: 1.3em;
+   color: black;
+   text-transform: uppercase;
+   letter-spacing: -1px;
+   padding-top: 9px;
+   font-weight: bold;
+   &:hover {
+     color: #fff;
+     text-decoration: none;
+   }
+ }
