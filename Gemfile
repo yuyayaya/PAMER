@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails',        '5.1.6'
+gem 'bcrypt',         '3.1.12'
 gem 'sassc-rails'
 gem 'mini_racer'
 gem 'bootstrap', '4.2.1'
