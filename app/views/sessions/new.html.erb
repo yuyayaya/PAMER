@@ -8,6 +8,12 @@
         <%= f.email_field :email, placeholder: "メールアドレス", class: 'form-control mt-3' %>
 
         <%= f.password_field :password, placeholder: "パスワード", class: 'form-control mt-3' %>
+        
+        <%= f.label :remember_me, class: "checkbox inline" do %>
+        <%= f.check_box :remember_me %>
+        <span>Remember me on this computer</span>
+        
+      <% end %>
 
         <%= f.submit "Log in", class: "btn btn-primary btn-block rounded-pill mt-3" %>
       <% end %>
