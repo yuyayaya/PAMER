@@ -1,0 +1,35 @@
+<% provide(:title, @user.name) %>
+  <div class="col-12">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>のプラン一覧
+      </h1>
+    </section>
+  </aside>
+  </div>
+  
+  <div class="ml-3 col-12">
+  <div>
+    <% if @user.plans.any? %>
+    <div style="height:300px;" class="border border-primary rounded p-3 mt-3 col-10">
+      <h3>Plans (<%= @user.plans.count %>)</h3>
+      <ol>
+        <%= render @plans %>
+      </ol>
+    </div>
+    <% end %>
+  </div>
+  
+  <div>
+    <% if @user.plans.any? %>
+    <div style="height:300px;" class="border border-primary rounded p-3 mt-3 co-10">
+      <h3>Plans (<%= @user.plans.count %>)</h3>
+      <ol>
+        <%= render @plans %>
+      </ol>
+    </div>
+    <% end %>
+  </div>
+  </div>
