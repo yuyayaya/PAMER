@@ -1,0 +1,8 @@
+<li id="plan"<%= plan.id %>">
+  <%= link_to gravatar_for(plan.user, size: 50), plan.user %>
+  <span class="user"><%= link_to plan.user.name, plan.user %></span>
+  <span class="content"><%= plan.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(plan.created_at) %> ago.
+  </span>
+</li>

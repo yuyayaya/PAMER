@@ -1,0 +1,39 @@
+<%= form_for(@plan, url: user_plan_path(@user.id, @plan.id)) do |f| %>
+ 
+<div class="row">
+ <div class="col-6">
+    <div style="height:250px;" class="mb-3 col-8 border border-secondary mt-3">
+     プランの写真
+    </div>
+     <%= f.file_field :image , class:"mt-3 w-75" %>
+    <div style="height:280px;" class="border border-secondary rounded-circle col-7 mt-3">
+    </div>
+     <div class="input-group mb-3">
+ 
+  <div class="custom-file">
+   
+  </div>
+</div>
+ </div>
+ <div style="height:500px;" class="col-6 border border-secondary mt-3">
+   <h1>Plan name</h1>
+     <p>Plan detail</p> 
+       <%= f.text_area :content , class:"h-50"%>
+    <div class="input-group mb-3 mt-3">
+     <div class="input-group-prepend">
+     <label class="input-group-text" for="inputGroupSelect01">ジャンル</label>
+     </div> 
+     <%= f.select :tag, [["Food&Drink", "Food&Drink"], ["Alchol", "Alchol"], 
+      ["Event", "Event"], ["Activity", "Activity"], ["Trend", "Trend"], ["Secret Spot", "Secret Spot"], 
+      ["Shopping", "Shopping"], ["School", "School"], ["Kawaii", "Kawaii"]] ,class:"form-control" %>
+  </div>
+ </div>
+ 
+ <%= f.submit "Edit the plan", class: "btn btn-primary" %>
+</div>
+
+<% end %>
+ 
+ 
+ 
+ 
