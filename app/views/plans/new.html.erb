@@ -2,48 +2,37 @@
  
 <div class="row">
  <div class="col-6">
-    <div style="height:250px;" class="col-8 border border-secondary mt-3">
-     <p>プランの写真</p>
+    <div style="height:250px;" class="mb-3 col-8 border border-secondary mt-3">
+     プランの写真
     </div>
+     <%= f.file_field :image , class:"mt-3 w-75" %>
     <div style="height:280px;" class="border border-secondary rounded-circle col-7 mt-3">
     </div>
      <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text">Upload</span>
-  </div>
+ 
   <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile01">
-    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+   
   </div>
 </div>
  </div>
  <div style="height:500px;" class="col-6 border border-secondary mt-3">
    <h1>Plan name</h1>
      <p>Plan detail</p> 
-     <input type="content"  class="col-7 border border-secondary ml-3 mb-5">
-   <div class="input-group mb-3 mt-3">
+       <%= f.text_area :content , class:"h-50"%>
+    <div class="input-group mb-3 mt-3">
      <div class="input-group-prepend">
      <label class="input-group-text" for="inputGroupSelect01">ジャンル</label>
      </div> 
-   <select class="custom-selec " id="inputGroupSelect01">
-    <option selected>Choose...</option>
-    <option value="1">Food&Drink</option>
-    <option value="2">Alchol</option>
-    <option value="3">Event</option>
-    <option value="4">Activity</option>
-    <option value="5">Trend</option>
-    <option value="6">Secret Spot</option>
-    <option value="7">Shopping</option>
-    <option value="8">School</option>
-    <option value="9">Kawaii</option>
-   </select>
+     <%= f.select :tag, [["Food&Drink", "Food&Drink"], ["Alchol", "Alchol"], 
+      ["Event", "Event"], ["Activity", "Activity"], ["Trend", "Trend"], ["Secret Spot", "Secret Spot"], 
+      ["Shopping", "Shopping"], ["School", "School"], ["Kawaii", "Kawaii"]] ,class:"form-control" %>
   </div>
  </div>
+ 
+ <%= f.submit "Create the plan", class: "btn btn-primary" %>
 </div>
 
-<input type="submit" value="プランを作成">
-
- <% end %>
+<% end %>
  
  
  

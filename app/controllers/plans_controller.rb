@@ -2,7 +2,7 @@ class PlansController < ApplicationController
   
   def index
       @user = User.find(params[:user_id])
-      @plans = @user.plans
+      @plans = @user.plans.all
   end
 
   def show
@@ -17,15 +17,15 @@ class PlansController < ApplicationController
   
   def edit
       @user = User.find(params[:user_id])
-      @plan = @user.plan.find(id: params[:id])
+      @plan = @user.plans.find(params[:id])
   end
   
-  def destoy
+  def destroy
     @user = User.find(params[:user_id])
-    @plan = @user.plan.find(params[:id])
+    @plan = @user.plans.find(params[:id])
     @plan.destroy
     flash[:success] = "The plan was destoyed successfully"
-    redirect_to("/plans/index")
+    redirect_to(user_plans_path(@user.id))
   end
   
   def create
@@ -33,20 +33,20 @@ class PlansController < ApplicationController
     @plan = @user.plans.build(plan_params)
     if @plan.save
       flash[:success] = "The new plan was created"
-      redirect_to("/plans/index")
+      redirect_to(user_plans_path(@user.id))
     else
-      render("plans/new")
+      render(new_user_plan_path(@user.id, @plan.id))
     end
   end
   
   def update
     @user = User.find(params[:user_id])
     @plan = @user.plans.find_by(id: params[:id])
-    if @plan.save
+    if @plan.update_attributes(plan_params)
       flash[:success] = "Plan was edited successfully"
-      redirect_to("/plans/index")
+      redirect_to(user_plans_path(@user.id))
     else
-      render("plans/edit")
+      render(edit_user_plan_path(@user.id, @plan.id))
     end
   end
   
