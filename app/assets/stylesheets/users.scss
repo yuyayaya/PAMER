@@ -1,3 +1,23 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 10px;
+    font-weight: normal;
+  }
+}
+
+#user_guide {
+  width: auto;
+  margin-left: 0;
+}
+
+#user_remember_me {
+  width: auto;
+  margin-left: 0;
+}
