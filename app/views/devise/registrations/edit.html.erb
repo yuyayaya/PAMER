@@ -1,5 +1,5 @@
-<div class="container">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<div class="container mt-5">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { confirm: "You sure?" }) do |f| %>
     <div class="row">
       <%= render "devise/shared/error_messages", resource: resource %>
       <div class="col-md-6">
@@ -8,7 +8,7 @@
 
       <div class="col-md-6">
         <div class="field row">
-          <%= f.label :name, class: "mr-n3 pr-n3 col-sm-2 font-italic" %>/
+          <%= f.label :name, class: "col-sm-2 font-italic" %>/
           <div class="col-sm-5">
             <nobr>
             <%= f.text_field :name, class: "mb-2", autofocus: true, autocomplete: "name" %>
@@ -17,8 +17,17 @@
         </div>
 
         <div class="field row">
-          <%= f.label :email, class: "mr-n3 pr-n3 col-sm-2 font-italic" %>/
-          <div class="col-sm-10">
+          <%= f.label :number, class: "col-sm-2 font-italic" %>/
+          <div class="col-sm-5">
+            <nobr>
+            <%= f.text_field :number, class: "mb-2", autofocus: true, autocomplete: "number" %>
+            </nobr>
+          </div>
+        </div>
+
+        <div class="field row">
+          <%= f.label :email, class: "col-sm-2 font-italic" %>/
+          <div class="col-sm-8">
             <nobr>
             <%= f.text_field :email, autofocus: true, autocomplete: "email" %>
             </nobr>
@@ -28,6 +37,14 @@
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
+
+        <div class="actions">
+          <div class="row">
+            <div class="col-md-6 col-md-offset6 mt-3">
+              <%= f.submit "edit", class: "btn btn-sm btn-primary rounded-pill" %>
+            </div>
+          </div>
+        </div>
 
       </div>
     </div>

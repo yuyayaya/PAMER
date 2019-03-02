@@ -7,12 +7,14 @@ class User < ApplicationRecord
          :confirmable, :lockable, :timeoutable, :omniauthable, omniauth_providers: [:facebook]
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
+  validates :number, presence: true, length: { minimum: 9 }
   validates :university, presence: true, length: { minimum: 4 }
+  validates :major, presence: true, length: { minimum: 4 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, allow_nil: true
 
   # userがいなければfacebookアカウントでuserを作成するメソッド
   def self.from_omniauth(auth)
@@ -39,4 +41,5 @@ class User < ApplicationRecord
   def remember_me
     true
   end
+
 end

@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20190223092149) do
     t.string "hometown"
     t.string "hobby"
     t.text "detail"
+    t.string "number"
     t.string "picture"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -1,0 +1,72 @@
+<div class="container mt-5">
+  <%= form_for current_user, url: {action: 'profile_update'}, method: :post, data: { confirm: "You sure?" } do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <h1>image</h1>
+    </div>
+
+    <div class="col-md-6">
+      <div class="field row">
+        <%= f.label :name, class: "mr-4 col-sm-2 font-italic" %>/
+        <div class="col-sm-5">
+          <nobr>
+            <%= f.text_field :name, class: "mb-2", autofocus: true, autocomplete: "name" %>
+          </nobr>
+        </div>
+      </div>
+
+      <div class="field row">
+        <%= f.label :university, class: "mr-4 col-sm-2 font-italic" %>/
+        <div class="col-sm-5">
+          <nobr>
+            <%= f.text_field :university, autofocus: true, autocomplete: "university" %>
+          </nobr>
+        </div>
+      </div>
+
+      <div class="field row">
+        <%= f.label :major, class: "mr-4 col-sm-2 font-italic" %>/
+        <div class="col-sm-5">
+          <nobr>
+            <%= f.text_field :major, autofocus: true, autocomplete: "major" %>
+          </nobr>
+        </div>
+      </div>
+
+      <div class="field row">
+        <%= f.label :hometown, class: "mr-4 col-sm-2 font-italic" %>/
+        <div class="col-sm-5">
+          <nobr>
+            <%= f.text_field :hometown, autofocus: true, autocomplete: "hometown" %>
+          </nobr>
+        </div>
+      </div>
+
+      <div class="field row">
+        <%= f.label :hobby, class: "mr-4 col-sm-2 font-italic" %>/
+        <div class="col-sm-5">
+          <nobr>
+            <%= f.text_field :hobby, autofocus: true, autocomplete: "hobby" %>
+          </nobr>
+        </div>
+      </div>
+
+      <div class="field row">
+        <%= f.label :detail, class: "mr-4 col-sm-2 font-italic" %>/
+        <div class="col-sm-8">
+          <%= f.text_area :detail, class: "h-100", autofocus: true, autocomplete: "detail" %>
+        </div>
+      </div>
+
+      <div class="actions">
+        <div class="row">
+          <div class="col-md-6 col-md-offset6 mt-3">
+            <%= f.submit "edit", class: "btn btn-sm btn-primary rounded-pill" %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <% end %>
+</div>

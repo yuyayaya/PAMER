@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' },
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' },
   path: '',
-  path_names: {sign_in: 'login', sign_out: 'logout', edit: 'profile', sign_up: 'registration'}
-  devise_scope :user do
-    get 'profile_edit', to: 'users/registrations#profile_edit', as: 'profile_edit'
-    patch 'profile_update', to: 'users/registrations#profile_update', as: 'profile_update'
-  end
+  path_names: {sign_in: 'login', sign_out: 'logout', edit: 'setting', sign_up: 'registration'}
   root 'static_pages#home'
   get  '/help',    to: 'static_pages#help'
   get  '/about',   to: 'static_pages#about'
@@ -14,10 +10,10 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#delete'
-  resources :users, only: [:show, :edit, :update] do
+  resources :users, only: [:show, :index] do
     resources :plans
     post '/create', to: 'plans#create'
   end
   get '/profile_edit', to: 'users#profile_edit'
-  patch '/profile_update', to: 'users#profile_update'
+  post '/profile_update', to: 'users#profile_update'
 end
