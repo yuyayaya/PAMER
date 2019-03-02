@@ -1,11 +1,72 @@
-<% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>image</h1>
+    </div>
+
+    <div class="col-md-6">
+      <div class="field row">
+        <label class="mr-4 col-sm-2 font-italic">Name</label>/
+        <div class="col-sm-5">
+          <nobr>
+            <span class="mb-2"><%= @user.name %></span>
+          </nobr>
+        </div>
+      </div>
+
+      <div class="field row">
+        <label class="mr-4 col-sm-2 font-italic">University</label>/
+        <div class="col-sm-5">
+          <nobr>
+            <span class="mb-2"><%= @user.university %></span>
+          </nobr>
+        </div>
+      </div>
+
+      <div class="field row">
+        <label class="mr-4 col-sm-2 font-italic">Major</label>/
+        <div class="col-sm-5">
+          <nobr>
+            <span class="mb-2"><%= @user.major %></span>
+          </nobr>
+        </div>
+      </div>
+
+      <div class="field row">
+        <label class="mr-4 col-sm-2 font-italic">Hometown</label>/
+        <div class="col-sm-5">
+          <nobr>
+            <span class="mb-2"><%= @user.hometown %></span>
+          </nobr>
+        </div>
+      </div>
+
+
+      <div class="field row">
+        <label class="mr-4 col-sm-2 font-italic">Hobby</label>/
+        <div class="col-sm-5">
+          <nobr>
+            <span class="mb-2"><%= @user.hobby %></span>
+          </nobr>
+        </div>
+      </div>
+
+
+      <div class="field row">
+        <label class="mr-4 col-sm-2 font-italic">Detail</label>/
+        <div class="col-sm-8">
+          <span class="mb-2 word-break"><%= @user.detail %></span>
+        </div>
+      </div>
+
+      <div class="actions">
+        <div class="row">
+          <div class="col-md-6 col-md-offset6 text-right">
+            <%= link_to "to edit page", profile_edit_path, class: "w-100 btn btn-sm btn-primary rounded-pill mt-2" %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>

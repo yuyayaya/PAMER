@@ -33,17 +33,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  def profile_edit
-  end
-
-  def profile_update
-    current_user.assign_attributes(account_update_params)
-    if current_user.save
-	  redirect_to my_page_path, notice: 'プロフィールを更新しました'
-    else
-      render "profile_edit"
-    end
-  end
+  # def profile_edit
+  # end
+  #
+  # def profile_update
+  #   current_user.assign_attributes(account_update_params)
+  #   if current_user.save
+	#   redirect_to my_page_path, notice: 'プロフィールを更新しました'
+  #   else
+  #     render "profile_edit"
+  #   end
+  # end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -63,7 +63,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
     def configure_account_update_params
-      devise_parameter_sanitizer.permit(:account_update, keys: [:name, :guide])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:picture, :university, :major, :hometown, :hobby, :detail ])
     end
 
   # The path used after sign up.
@@ -71,8 +71,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
       super(resource)
     end
 
-    def configure_account_update_params
-      devise_parameter_sanitizer.permit(:account_update, keys: [:image, :university, :major, :hometown, :hobby, :detail ])
+    def update_resource(resource, params)
+      resource.update_without_password(params)
+    end
+
+    def after_update_path_for(resource)
+      edit_user_registration_path(resource)
     end
 
   # The path used after sign up for inactive accounts.
