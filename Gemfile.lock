@@ -76,13 +76,10 @@ GEM
       railties (>= 3.2, < 6.0)
     erubi (1.8.0)
     execjs (2.7.0)
-<<<<<<< EAD
-    faraday (0.15.4)
-      multipart-post (>= 1.2, < 3)
-=======
     faker (1.9.3)
       i18n (>= 0.7)
->>>>>>> make plan
+    faraday (0.15.4)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
     formatador (0.2.5)
     globalid (0.4.2)
@@ -274,12 +271,9 @@ DEPENDENCIES
   byebug (= 9.0.6)
   carrierwave
   coffee-rails (= 4.2.2)
-<<<<<<< HEAD
   devise
   dotenv-rails
-=======
   faker
->>>>>>> make plan
   guard (= 2.13.0)
   guard-minitest (= 2.4.4)
   jbuilder (= 2.7.0)
