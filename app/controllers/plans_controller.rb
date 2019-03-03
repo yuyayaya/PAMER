@@ -54,6 +54,7 @@ class PlansController < ApplicationController
 
     def plan_params
       params.require(:plan).permit(:content)
+      params.require(:plan).permit(:title, :memo, :author, :image)
     end
   
   
