@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  scope :guides, -> { where(guide: false) }
   has_many :plans, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -15,6 +16,8 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }, allow_nil: true
+  mount_uploader :picture, PictureUploader
+  validates :picture, presence: true
 
   # userがいなければfacebookアカウントでuserを作成するメソッド
   def self.from_omniauth(auth)

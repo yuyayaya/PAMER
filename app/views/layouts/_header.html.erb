@@ -4,10 +4,13 @@
              width: '55', height: '50', class: "rounded-circle"), root_path %>
     <nav>
       <ul class="nav nav-tabs">
-        <% if user_signed_in? %>
+        <% if user_signed_in? & !current_user&.guide %>
           <li class="nav-item"><%= link_to "Make Plan", new_user_plan_path(current_user.id), class: "nav-link" %></li>
         <% end %>
-        <li class="nav-item"><%= link_to "Plans", '#', class: "nav-link" %></li>
+        <% if user_signed_in? & current_user&.guide %>
+          <li class="nav-item"><%= link_to "Apply", "#", class: "nav-link" %></li>
+        <% end %>
+        <li class="nav-item"><%= link_to "Plans", plans_path, class: "nav-link" %></li>
         <li class="nav-item"><%= link_to "Guides", users_path, class: "nav-link" %></li>
         <% if user_signed_in? %>
           <li class="dropdown">

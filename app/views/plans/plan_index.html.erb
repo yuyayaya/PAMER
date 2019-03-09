@@ -1,0 +1,19 @@
+<div class="row">
+<% @plans.each do |plan| %>
+  <div class="col-6 col-md-4 mt-4 ">
+    <div class="card">
+      <%= image_tag(plan.image, class: "card-img-top", alt: "サンプル画像") %>
+      <div class="card-body">
+        <div class="card-title"><%= plan.name%></div>
+        <div class="card-text">
+          <% if current_user&.id == plan.user.id %>
+            <%= link_to 'Edit', edit_user_plan_path(@user.id, plan.id) %>
+            <%= link_to 'Destroy', user_plan_path(@user.id, plan.id), method: :delete,
+                                        data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>

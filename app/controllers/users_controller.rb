@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.paginate(page: params[:page])
+    # @users = User.all.reject { |user| user.guide }
+    @users = User.guides.paginate(page: params[:page])
   end
 
   def show

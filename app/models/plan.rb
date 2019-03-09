@@ -1,5 +1,5 @@
 class Plan < ApplicationRecord
-  mount_uploader :image, ImageUploader
+  mount_uploader :image, PictureUploader
   belongs_to :user
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
