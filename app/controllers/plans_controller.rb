@@ -7,7 +7,11 @@ class PlansController < ApplicationController
 
   def plan_index
     @user = current_user
-    @plans = Plan.paginate(page: params[:page])
+    if params[:search].present?
+      @plans = Plan.search(params[:search]).paginate(page: params[:page])
+    else
+      @plans = Plan.paginate(page: params[:page])
+    end
   end
 
   def show
@@ -30,7 +34,7 @@ class PlansController < ApplicationController
     @plan = @user.plans.find(params[:id])
     @plan.destroy
     flash[:success] = "The plan was destoyed successfully"
-    redirect_to(user_plans_path(@user.id))
+    redirect_to plans_path
   end
 
   def create
@@ -38,7 +42,7 @@ class PlansController < ApplicationController
     @plan = @user.plans.build(plan_params)
     if @plan.save
       flash[:success] = "The new plan was created"
-      redirect_to(user_plans_path(@user.id))
+      redirect_to plans_path
     else
       render 'new'
     end
@@ -49,7 +53,7 @@ class PlansController < ApplicationController
     @plan = @user.plans.find_by(id: params[:id])
     if @plan.update_attributes(plan_params)
       flash[:success] = "Plan was edited successfully"
-      redirect_to(user_plans_path(@user.id))
+      redirect_to plans_path
     else
       render(edit_user_plan_path(@user.id, @plan.id))
     end

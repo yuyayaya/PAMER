@@ -1,16 +1,16 @@
 <%= form_for(@plan, url: user_plans_path) do |f| %>
 <div class="row">
-  <div class="col-md-6">
-    <div style="height:250px;" class="mb-3 col-8 border border-secondary mt-3"></div>
-    <div class="field">
-      <%= f.file_field :image , class:"mt-3 w-75" %>
-    </div>
+  <div class="col-6">
+    <div style="height:250px;", class="mx-auto col-8 border border-secondary mt-3 mb-3"></div>
+      <div class="field">
+        <%= f.file_field :image , class:"mt-3 ml-5 w-75" %>
+      </div>
     <div>
-      <%= image_tag @user.picture, class: "mx-auto d-block mt-3", alt: "サンプル画像" %>
+      <%= image_tag @user.picture, class: "mx-auto d-block mt-5 rounded-circle", width: "250", height: "250", alt: "サンプル画像" %>
     </div>
   </div>
 
-  <div style="height:500px;" class="col-6 border border-secondary mt-3">
+  <div style="height:500px;" class="col-6 border border-secondary mt-3 mb-3">
     <p>The name of plan<p>
       <%= f.text_field :name , class:"h-10 col-6 center", :placeholder =>"ex) Let's go to Asakusa"%>
     <p>Plan detail</p>
@@ -23,7 +23,7 @@
       ["Event", "Event"], ["Activity", "Activity"], ["Trend", "Trend"], ["Secret Spot", "Secret Spot"],
       ["Shopping", "Shopping"], ["School", "School"], ["Kawaii", "Kawaii"]] ,class:"form-control" %>
     </div>
+    <%= f.submit "Create the plan", class: "btn btn-primary rounded-pil mt-5" %>
   </div>
- <%= f.submit "Create the plan", class: "btn btn-primary rounded-pil w-75 mt-3" %>
 </div>
 <% end %>

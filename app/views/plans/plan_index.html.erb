@@ -1,19 +1,54 @@
-<div class="row">
-<% @plans.each do |plan| %>
-  <div class="col-6 col-md-4 mt-4 ">
-    <div class="card">
-      <%= image_tag(plan.image, class: "card-img-top", alt: "サンプル画像") %>
-      <div class="card-body">
-        <div class="card-title"><%= plan.name%></div>
+<% provide(:title, 'All plans') %>
+<h1 class="font-italic">All Plans</h1>
+<%= will_paginate(@plans, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+
+<!-- 検索拡張機能 -->
+<div class="row mt-3">
+  <div class="col-md-6 offset-md-3">
+    <p>plan search</p>
+    <%= form_for(:search, url: plans_path, method: 'get') do |f| %>
+      <%= f.text_field :kwd, class: "form-control-sm w-50 mr-3 mb-3" %>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.select :tag, [["Food&Drink", "Food&Drink"], ["Alchol", "Alchol"],
+          ["Event", "Event"], ["Activity", "Activity"], ["Trend", "Trend"], ["Secret Spot", "Secret Spot"],
+          ["Shopping", "Shopping"], ["School", "School"], ["Kawaii", "Kawaii"]],
+          include_blank: true, class: "form-control-lg mr-3" %>
+        </div>
+        <div class="col-md-6">
+          <%= f.submit 'Search', name: nil, class: "btn btn-sm btn-primary rounded-pill w-50" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<ul class="plans">
+  <div class="row">
+    <% @plans.each do |plan| %>
+    <div class="col-6 col-md-4 mt-4 ">
+      <div class="card">
+        <%= link_to image_tag(plan.image, class: "card-img-top", alt: "サンプル画像"),
+            user_plan_path(plan.user_id, plan.id) %>
+        <div class="card-body">
+        <div class="card-title"><%= plan.name %></div>
         <div class="card-text">
-          <% if current_user&.id == plan.user.id %>
-            <%= link_to 'Edit', edit_user_plan_path(@user.id, plan.id) %>
-            <%= link_to 'Destroy', user_plan_path(@user.id, plan.id), method: :delete,
-                                        data: { confirm: 'Are you sure?' } %>
-          <% end %>
+          <%= plan.tag %>
+          <div class="row">
+            <div class="col-md-6">
+              <% if current_user&.id == plan.user.id %>
+              <%= link_to 'Edit', edit_user_plan_path(@user.id, plan.id) %>
+              <%= link_to 'Destroy', user_plan_path(@user.id, plan.id), method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
-</div>
+   <% end %>
+ </div>
+</ul>
+
+<%= will_paginate(@plans, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
