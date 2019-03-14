@@ -1,48 +1,60 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-4 ml-5">
-      <%= image_tag @user.picture.url, height: "214.5", width: "250" %>
+    <div class="col-md-7">
+      <%= image_tag @user.picture.url, class: "h-auto w-auto d-block mx-auto" %>
     </div>
 
-    <div class="col-md-7">
-      <label class="mr-4 col-sm-2 font-italic">Name</label>/
-      <div class="col-sm-5">
-        <nobr>
-          <span class="mb-2"><%= @user.name %></span>
-        </nobr>
+    <div class="col-md-5">
+      <div class="row field">
+        <label class="mr-4 col-sm-2 font-italic">Name</label>/
+        <div class="col-sm-5">
+          <nobr>
+            <span class="mb-2"><%= @user.name %></span>
+          </nobr>
+        </div>
       </div>
 
-      <label class="mr-4 col-sm-2 font-italic">University</label>/
-      <div class="col-sm-5">
-        <nobr>
-          <span class="mb-2"><%= @user.university %></span>
-        </nobr>
+      <div class="row field">
+        <label class="mr-4 col-sm-2 font-italic">University</label>/
+        <div class="col-sm-5">
+          <nobr>
+            <span class="mb-2"><%= @user.university %></span>
+          </nobr>
+        </div>
       </div>
 
-      <label class="mr-4 col-sm-2 font-italic">Major</label>/
-      <div class="col-sm-5">
-        <nobr>
-          <span class="mb-2"><%= @user.major %></span>
-        </nobr>
+      <div class="row field">
+        <label class="mr-4 col-sm-2 font-italic">Major</label>/
+        <div class="col-sm-5">
+          <nobr>
+            <span class="mb-2"><%= @user.major %></span>
+          </nobr>
+        </div>
       </div>
 
-      <label class="mr-4 col-sm-2 font-italic">Hometown</label>/
-      <div class="col-sm-5">
-        <nobr>
-          <span class="mb-2"><%= @user.hometown %></span>
-        </nobr>
+      <div class="row field">
+        <label class="mr-4 col-sm-2 font-italic">Hometown</label>/
+        <div class="col-sm-5">
+          <nobr>
+            <span class="mb-2"><%= @user.hometown %></span>
+          </nobr>
+        </div>
       </div>
 
-      <label class="mr-4 col-sm-2 font-italic">Hobby</label>/
-      <div class="col-sm-5">
-        <nobr>
-          <span class="mb-2"><%= @user.hobby %></span>
-        </nobr>
+      <div class="row filed">
+        <label class="mr-4 col-sm-2 font-italic">Hobby</label>/
+        <div class="col-sm-5">
+          <nobr>
+            <span class="mb-2"><%= @user.hobby %></span>
+          </nobr>
+        </div>
       </div>
 
-      <label class="mr-4 col-sm-2 font-italic">Detail</label>/
-      <div class="col-sm-8">
-        <span class="mb-2 word-break"><%= @user.detail %></span>
+      <div class="row field">
+        <label class="mr-4 col-sm-2 font-italic">Detail</label>/
+        <div class="col-sm-8">
+          <span class="mb-2 word-break"><%= @user.detail %></span>
+        </div>
       </div>
 
       <div class="actions">

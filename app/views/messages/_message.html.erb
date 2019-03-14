@@ -1,0 +1,24 @@
+<div class="message message-<%= message.id %> pb-5">
+  <% user = User.find_by(id: message.from_id) %>
+    <p class="mb-n1"><%= image_tag user.picture.url, class: "rounded-pill sender-of-#{message.id}",
+      id: "message_sender", height: "50", width: "50" %></p>
+    <nobr class="font-message-size align-bottom sender-of-<%= message.id %>"><%= message.created_at.month %>/<%= message.created_at.day %> <%= message.created_at.hour %>:<%= message.created_at.min %></nobr>
+    <p class="<%= message.id %> word-break mb-n1" id="message_content"><%= safe_join(message.content.split("\n"), tag(:br)) %></p>
+    <nobr class="font-message-size align-bottom receiver-of-<%= message.id %>"><%= message.created_at.month %>/<%= message.created_at.day %> <%= message.created_at.hour %>:<%= message.created_at.min %></nobr>
+  <script type="text/javascript">
+    var from_id = <%= message.from_id %>;
+    var current_user_id = $('#messages').data('session');
+    if(from_id == current_user_id){
+      $('div.message-' + <%= message.id %>).css('text-align', 'right');
+      $('nobr.receiver-of-' + <%= message.id %>).css('display', 'none');
+      $('p.' + <%= message.id %>).css('text-align', 'left');
+      $('p.' + <%= message.id %>).addClass('balloon-r');
+      $('img.sender-of-' + <%= message.id %>).css('display', 'none');
+    }else{
+      $('div.message-' + <%= message.id %>).css('text-align', 'left');
+      $('nobr.sender-of-' + <%= message.id %>).css('display', 'none');
+      $('p.' + <%= message.id %>).css('text-align', 'left');
+      $('p.' + <%= message.id %>).addClass('balloon-l');
+    }
+  </script>
+</div>

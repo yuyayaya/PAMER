@@ -1,6 +1,7 @@
 <div class="col-6 col-md-4 mt-4">
   <div class="card" style="width: 18rem;">
-    <%= link_to image_tag(user.picture, class: "card-img-top", height: "214.5", alt: "サンプル画像"), user_path(user.id) %>
+    <%= link_to image_tag(user.picture, class: "card-img-top",
+          height: "241.5", alt: "サンプル画像"), user_path(user.id) %>
     <div class="card-body">
       <h5 class="card-title"><%= user.name %></h5>
       <p class="card-text">univ: <%= user.university %><%= link_to "more detail", user_path(user.id), class:"float-right btn btn-sm btn-primary" %></p>

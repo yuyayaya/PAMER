@@ -1,17 +1,18 @@
 <div class="container mt-5">
-  <%= form_for current_user, url: {action: 'profile_update'}, method: :post, data: { confirm: "You sure?" } do |f| %>
+  <%= form_for current_user, url: {action: 'profile_update'}, method: :post do |f| %>
   <div class="row">
-    <div class="col-md-4">
-      <%= image_tag @user.picture.url, class: "mx-auto d-block" %>
+    <div class="col-md-7">
+      <%= image_tag @user.picture.url, class: "mx-auto d-block w-auto h-auto" %>
       <div class="field">
-        <%= f.file_field :picture, class: "mb-3 mt-3", autofocus: true, autocomplete: "picture" %>
+        <%= f.file_field :picture, class: "mb-3 mt-3 w-75 mx-auto d-block",
+                  autofocus: true, autocomplete: "picture" %>
       </div>
     </div>
 
-    <div class="col-md-6 offset-sm-1">
+    <div class="col-md-5">
       <div class="field row">
         <%= f.label :name, class: "mr-4 col-sm-2 font-italic" %>/
-        <div class="col-sm-5">
+        <div class="col-sm-6">
           <nobr>
             <%= f.text_field :name, class: "mb-2", autofocus: true, autocomplete: "name" %>
           </nobr>
@@ -20,7 +21,7 @@
 
       <div class="field row">
         <%= f.label :university, class: "mr-4 col-sm-2 font-italic" %>/
-        <div class="col-sm-5">
+        <div class="col-sm-6">
           <nobr>
             <%= f.text_field :university, autofocus: true, autocomplete: "university" %>
           </nobr>
@@ -29,7 +30,7 @@
 
       <div class="field row">
         <%= f.label :major, class: "mr-4 col-sm-2 font-italic" %>/
-        <div class="col-sm-5">
+        <div class="col-sm-6">
           <nobr>
             <%= f.text_field :major, autofocus: true, autocomplete: "major" %>
           </nobr>
@@ -38,7 +39,7 @@
 
       <div class="field row">
         <%= f.label :hometown, class: "mr-4 col-sm-2 font-italic" %>/
-        <div class="col-sm-5">
+        <div class="col-sm-6">
           <nobr>
             <%= f.text_field :hometown, autofocus: true, autocomplete: "hometown" %>
           </nobr>
@@ -47,7 +48,7 @@
 
       <div class="field row">
         <%= f.label :hobby, class: "mr-4 col-sm-2 font-italic" %>/
-        <div class="col-sm-5">
+        <div class="col-sm-6">
           <nobr>
             <%= f.text_field :hobby, autofocus: true, autocomplete: "hobby" %>
           </nobr>
@@ -64,7 +65,8 @@
       <div class="actions">
         <div class="row">
           <div class="col-md-6 col-md-offset6 mt-3">
-            <%= f.submit "edit", class: "btn btn-sm btn-primary rounded-pill" %>
+            <%= f.submit "edit", class: "btn btn-sm btn-primary rounded-pill",
+                      data: { confirm: "You sure?" } %>
           </div>
         </div>
       </div>
