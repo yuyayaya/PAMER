@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :plans
     post '/create', to: 'plans#create'
   end
+  resources :requests, only: :create
   get '/profile_edit', to: 'users#profile_edit'
   post '/profile_update', to: 'users#profile_update'
   get '/plans', to: 'plans#plan_index'
