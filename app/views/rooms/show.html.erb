@@ -1,0 +1,29 @@
+<h1 class="font-italic">Chat with <%= @user.name %></h1>
+
+<div class="row">
+  <div class="col-md-3 offset-md-1">
+    aiueo
+  </div>
+  <section class="message_box col-md-7">
+    <div id="messages" data-session="<%= session[:user_id] %>">
+      <%= render @messages %>
+    </div>
+  </section>
+</div>
+
+<script type="text/javascript">
+  var height = 0;
+  $("div.message").each( function() {
+    height += ($(this).outerHeight());
+  });
+  $('section.message_box').scrollTop(height);
+</script>
+<div class="row">
+  <div class="col-md-3 offset-md-1">
+    aiueo
+  </div>
+  <div class="message_form col-md-7">
+    <%= render 'messages/message_form',
+    {from_user: current_user, to_user: @user, room_id: @room_id} %>
+  </div>
+</div>

@@ -1,5 +1,12 @@
 class User < ApplicationRecord
+  scope :guides, -> { where(guide: false) }
   has_many :plans, dependent: :destroy
+  has_many :from_messages, class_name: "Message",
+          foreign_key: "from_id", dependent: :destroy
+  has_many :to_messages, class_name: "Message",
+          foreign_key: "to_id", dependent: :destroy
+  has_many :sent_messages, through: :from_messages, source: :from
+  has_many :received_messages, through: :to_messages, source: :to
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -15,6 +22,8 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }, allow_nil: true
+  mount_uploader :picture, PictureUploader
+  validates :picture, presence: true
 
   # userがいなければfacebookアカウントでuserを作成するメソッド
   def self.from_omniauth(auth)
@@ -40,6 +49,11 @@ class User < ApplicationRecord
 
   def remember_me
     true
+  end
+
+  # Send message to other user
+  def send_message(other_user, room_id, content)
+    from_messages.create!(to_id: other_user.id, room_id: room_id, content: content)
   end
 
 end

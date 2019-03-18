@@ -1,15 +1,12 @@
-<div class="row">
-<% @users.each do |user| %>
-  <div class="col-6 col-md-4 mt-4 ">
-    <div class="card">
-      <%= link_to image_tag("PAM.png", class: "card-img-top", alt: "サンプル画像"), user_path(user.id) %>
-      <div class="card-body">
-        <div class="card-title"><%= user.name %></div>
-        <div class="card-text"></div>
-      </div>
-    </div>
-    <div class="m-4">
+<div class="col-6 col-md-4 mt-4">
+  <div class="card" style="width: 18rem;">
+    <%= link_to image_tag(user.picture, class: "card-img-top",
+          height: "241.5", alt: "サンプル画像"), user_path(user.id) %>
+    <div class="card-body">
+      <h5 class="card-title"><%= user.name %></h5>
+      <p class="card-text">univ: <%= user.university %><%= link_to "more detail", user_path(user.id), class:"float-right btn btn-sm btn-primary" %></p>
     </div>
   </div>
-<% end %>
+  <div class="m-4">
+  </div>
 </div>

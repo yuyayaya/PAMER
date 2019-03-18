@@ -108,3 +108,63 @@ input {
 .word-break {
   word-break: break-all;
 }
+
+/* chat */
+
+section.message_box {
+  padding: 10px;
+  border: 1px solid #eee;
+  overflow: scroll;
+  #messages {
+    height: 400px;
+  }
+}
+
+div.message_form {
+  padding-top: 10px;
+}
+
+#message_sender {
+  font-size: 1.1em;
+  display: inline-block;
+}
+
+/* 吹き出し本体 */
+#message_content {
+  font-size: 1.0em;
+  width: 200px;
+  height: auto;
+  background: #00c300;
+  border-radius: 15px;
+  padding: 5px;
+  position: relative;
+  display: inline-block;
+}
+
+.balloon-r:before {
+  right: -5px;
+  top: 0px;
+  position: absolute;
+  content: '';
+  width: 0px; /* ここで位置調整 */
+  height: 0px;  /* ここで位置調整 */
+  border-style: solid;
+  border-width: 0px 0px 10px 20px;
+  border-color: transparent transparent transparent #00c300;
+}
+
+.balloon-l:before {
+  left: -5px;
+  top: 0px;
+  position: absolute;
+  content: '';
+  width: 0px; /* ここで位置調整 */
+  height: 0px;  /* ここで位置調整 */
+  border-style: solid;
+  border-width: 0px 20px 10px 0px;
+  border-color: transparent #00c300 transparent transparent;
+}
+
+.font-message-size {
+  font-size: 1px;
+}

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' },
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'users/registrations', sessions: 'users/sessions' },
   path: '',
   path_names: {sign_in: 'login', sign_out: 'logout', edit: 'setting', sign_up: 'registration'}
   root 'static_pages#home'
@@ -16,4 +17,6 @@ Rails.application.routes.draw do
   end
   get '/profile_edit', to: 'users#profile_edit'
   post '/profile_update', to: 'users#profile_update'
+  get '/plans', to: 'plans#plan_index'
+  resources :rooms, only: [:show, :index, :create]
 end
