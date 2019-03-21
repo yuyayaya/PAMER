@@ -61,9 +61,9 @@ class User < ApplicationRecord
   end
   
     # ガイドに申し込み
-  def apply(guide_user)
-    self.guides << guide_user
-  end
+  # def apply(guide_user)
+  #   self.guides << guide_user
+  # end
 
   # ガイドへの申し込みキャンセルリクエスト
   # def cancel_request(guide_user)
