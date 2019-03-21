@@ -7,6 +7,15 @@ class User < ApplicationRecord
           foreign_key: "to_id", dependent: :destroy
   has_many :sent_messages, through: :from_messages, source: :from
   has_many :received_messages, through: :to_messages, source: :to
+  has_many :active_requests, class_name:  "Request",
+                                  foreign_key: "tourist_id",
+                                  dependent:   :destroy
+  has_many :passive_requsts, class_name:  "Request",
+                                   foreign_key: "guide_id",
+                                   dependent:   :destroy
+  has_many :guides, through: :active_requests, source: :guide
+  has_many :tourists, through: :passive_requests, source: :tourist
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -50,6 +59,21 @@ class User < ApplicationRecord
   def remember_me
     true
   end
+  
+    # ガイドに申し込み
+  # def apply(guide_user)
+  #   self.guides << guide_user
+  # end
+
+  # ガイドへの申し込みキャンセルリクエスト
+  # def cancel_request(guide_user)
+  #   self.active_requests.find_by(guide_id: guide_user.id).destroy
+  # end
+
+  # ガイドに申し込んだことがあるかどうか
+  # def applied?(guide_user)
+  #   self.guides.include?(guide_user)
+  # end
 
   # Send message to other user
   def send_message(other_user, room_id, content)

@@ -24,6 +24,9 @@
     <div class="input-group mb-3 mt-3 border border-secondary">
       <%= @plan.tag %>
     </div>
-      <%= link_to "apply", "#", class:"mx-auto d-block btn btn-primary mt-5 rounded-pill w-75" %>
+      <% if current_user.guide == true %>
+        <%= link_to "Apply", plan_requests_path(@plan, guide_id: @plan.user.id), method: :post, data: { confirm: 'Are you sure?' },
+            class: "mx-auto d-block btn btn-primary mt-5 rounded-pill w-75" %>
+      <% end %>
   </div>
 </div>
