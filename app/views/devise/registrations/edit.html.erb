@@ -4,27 +4,27 @@
       <%= render "devise/shared/error_messages", resource: resource %>
       <div class="col-md-8 text-md-center">
         <h1 class="font-italic mb-5">Settings</h1>
-        <div class="field row">
+        <div class="field row justify-content-center">
           <%= f.label :name, class: "col-sm-2 font-italic" %>/
-          <div class="col-sm-5">
+          <div class="col-sm-6">
             <nobr>
             <%= f.text_field :name, class: "mb-2", autofocus: true, autocomplete: "name" %>
             </nobr>
           </div>
         </div>
 
-        <div class="field row">
+        <div class="field row justify-content-center">
           <%= f.label :number, class: "col-sm-2 font-italic" %>/
-          <div class="col-sm-5">
+          <div class="col-sm-6">
             <nobr>
             <%= f.text_field :number, class: "mb-2", autofocus: true, autocomplete: "number" %>
             </nobr>
           </div>
         </div>
 
-        <div class="field row">
+        <div class="field row justify-content-center">
           <%= f.label :email, class: "col-sm-2 font-italic" %>/
-          <div class="col-sm-8">
+          <div class="col-sm-6">
             <nobr>
             <%= f.text_field :email, autofocus: true, autocomplete: "email" %>
             </nobr>
@@ -38,7 +38,7 @@
         <div class="actions">
           <div class="row">
             <div class="col-lg-12">
-              <%= f.submit "edit", class: "btn btn-sm btn-primary rounded-pill text-center w-50 mt-3" %>
+              <%= f.submit "edit", class: "btn btn-sm btn-primary rounded-pill text-center w-50 mt-5" %>
             </div>
           </div>
         </div>

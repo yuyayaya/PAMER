@@ -1,5 +1,5 @@
 <% provide(:title, @user.name) %>
-<div class="row">
+<div class="row mb-5">
   <div class="col-md-6">
     <div class="field">
       <%= image_tag @plan.image , class: "mx-auto d-block mt-3 mb-3 w-auto",
@@ -24,5 +24,6 @@
     <div class="input-group mb-3 mt-3 border border-secondary">
       <%= @plan.tag %>
     </div>
+      <%= link_to "apply", "#", class:"mx-auto d-block btn btn-primary mt-5 rounded-pill w-75" %>
   </div>
 </div>

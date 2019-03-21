@@ -3,8 +3,8 @@
     <%= link_to image_tag(user.picture, class: "card-img-top",
           height: "241.5", alt: "サンプル画像"), user_path(user.id) %>
     <div class="card-body">
-      <h5 class="card-title"><%= user.name %></h5>
-      <p class="card-text">univ: <%= user.university %><%= link_to "more detail", user_path(user.id), class:"float-right btn btn-sm btn-primary" %></p>
+      <h5 class="card-title"><%= user.name %><%= link_to "more detail", user_path(user.id), class:"float-right btn btn-sm btn-primary" %></h5>
+      <p class="card-text">univ: <%= user.university %></p>
     </div>
   </div>
   <div class="m-4">

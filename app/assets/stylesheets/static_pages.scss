@@ -47,3 +47,56 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
+
+/* landing_page */
+
+.lp-background {
+  background: #151515 url("kite.jpg") no-repeat fixed left bottom;
+  background-size: cover;
+  text-align: center;
+  font-family:  Raleway, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+#top {
+  padding: 200px 0 360px 0;
+}
+
+#genre {
+  padding: 100px 0;
+  background-color: white;
+}
+
+#outline {
+  padding: 150px 0;
+  background-color: #383634;
+}
+
+
+#method {
+  padding: 150px 0;
+  background-color: white;
+}
+
+
+.heading {
+  position: relative;
+  display: inline-block;
+  margin: 30px 0 15px;
+  padding-bottom: 15px;
+  letter-spacing: 2px;
+  font-size: 3rem;
+}
+
+.heading::before,
+.heading::after {
+  content: ' ';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid #999;
+}
+
+.heading::before {
+  bottom: 5px;
+}

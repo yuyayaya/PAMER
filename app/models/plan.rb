@@ -6,6 +6,7 @@ class Plan < ApplicationRecord
   validates :name, presence: true
   validates :tag, presence: true
   validates :content, presence: true, length: { maximum: 140 }
+  validates :image, presence: true
 
   def self.search(search) #ここでのself.はPlan.を意味する
     plans = self.all

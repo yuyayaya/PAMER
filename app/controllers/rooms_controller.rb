@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  before_action :chatting, only: :show
 
   def show
     @user = User.find(params[:id])
@@ -15,4 +16,14 @@ class RoomsController < ApplicationController
       "#{second_user.id}-#{first_user.id}"
     end
   end
+
+  private
+
+    def chatting
+      user = User.find(params[:id])
+      puts "aaaaa" * 100
+      if user.guide == current_user.guide
+        redirect_to root_path, alert: "このユーザーとはチャットできません"
+      end
+    end
 end

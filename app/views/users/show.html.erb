@@ -1,10 +1,10 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-6">
       <%= image_tag @user.picture.url, class: "h-auto w-auto d-block mx-auto" %>
     </div>
 
-    <div class="col-md-5">
+    <div class="col-md-6">
       <div class="row field">
         <label class="mr-4 col-sm-2 font-italic">Name</label>/
         <div class="col-sm-5">
@@ -58,10 +58,11 @@
       </div>
 
       <div class="actions">
-        <div class="row">
-          <div class="col-md-6 col-md-offset6 text-right">
-            <%= link_to "to edit page", profile_edit_path, class: "w-100 btn btn-sm btn-primary rounded-pill mt-2" %>
-          </div>
+        <div class="row justify-content-center">
+          <% if @user == current_user %>
+            <%= link_to "to edit page", profile_edit_path,
+              class: "w-50 btn btn-sm btn-primary rounded-pill mt-5 ml-5" %>
+          <% end %>
         </div>
       </div>
 

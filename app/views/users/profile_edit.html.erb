@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <%= form_for current_user, url: {action: 'profile_update'}, method: :post do |f| %>
   <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-6">
       <%= image_tag @user.picture.url, class: "mx-auto d-block w-auto h-auto" %>
       <div class="field">
         <%= f.file_field :picture, class: "mb-3 mt-3 w-75 mx-auto d-block",
@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <div class="col-md-5">
+    <div class="col-md-6">
       <div class="field row">
         <%= f.label :name, class: "mr-4 col-sm-2 font-italic" %>/
         <div class="col-sm-6">
@@ -63,11 +63,9 @@
       </div>
 
       <div class="actions">
-        <div class="row">
-          <div class="col-md-6 col-md-offset6 mt-3">
-            <%= f.submit "edit", class: "btn btn-sm btn-primary rounded-pill",
+        <div class="row justify-content-center">
+            <%= f.submit "edit", class: "w-50 btn btn-sm btn-primary rounded-pill mt-5 ml-5",
                       data: { confirm: "You sure?" } %>
-          </div>
         </div>
       </div>
 

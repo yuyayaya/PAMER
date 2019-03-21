@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   def profile_update
     @user = current_user
     if current_user.update_attributes(profile_params)
-      redirect_to profile_edit_path, notice: 'プロフィールを更新しました'
+      redirect_to user_path(@user.id), notice: 'プロフィールを更新しました'
     else
       render "profile_edit"
     end
@@ -63,6 +63,6 @@ class UsersController < ApplicationController
     end
 
     def profile_params
-      params.require(:user).permit(:university, :major, :hometown, :hobby, :detail, :picture)
+      params.require(:user).permit(:name, :university, :major, :hometown, :hobby, :detail, :picture)
     end
 end

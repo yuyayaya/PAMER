@@ -33,16 +33,14 @@ class PlansController < ApplicationController
     @user = User.find(params[:user_id])
     @plan = @user.plans.find(params[:id])
     @plan.destroy
-    flash[:success] = "The plan was destoyed successfully"
-    redirect_to plans_path
+    redirect_to plans_path, notice: "The plan was destoyed successfully"
   end
 
   def create
     @user = User.find(params[:user_id])
     @plan = @user.plans.build(plan_params)
     if @plan.save
-      flash[:success] = "The new plan was created"
-      redirect_to plans_path
+      redirect_to plans_path, notice: "The new plan was created"
     else
       render 'new'
     end
@@ -52,10 +50,9 @@ class PlansController < ApplicationController
     @user = User.find(params[:user_id])
     @plan = @user.plans.find_by(id: params[:id])
     if @plan.update_attributes(plan_params)
-      flash[:success] = "Plan was edited successfully"
-      redirect_to plans_path
+      redirect_to plans_path, notice: "Plan was edited successfully"
     else
-      render(edit_user_plan_path(@user.id, @plan.id))
+      render 'edit'
     end
   end
 
