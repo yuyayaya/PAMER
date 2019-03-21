@@ -4,12 +4,20 @@
 
 $gray-medium-light: #eaeaea;
 
+$enable-gradients: true;
+
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
 }
 
+/* body */
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
 
 /* miscellaneous */
 
@@ -115,6 +123,7 @@ section.message_box {
   padding: 10px;
   border: 1px solid #eee;
   overflow: scroll;
+  background: #CCFFFF;
   #messages {
     height: 400px;
   }
@@ -162,9 +171,37 @@ div.message_form {
   height: 0px;  /* ここで位置調整 */
   border-style: solid;
   border-width: 0px 20px 10px 0px;
-  border-color: transparent #00c300 transparent transparent;
+  border-color: transparent #FFF transparent transparent;
 }
 
 .font-message-size {
   font-size: 1px;
+}
+
+.border-none td {
+  border-bottom: 0px !important;
+  border-right: 0px !important;
+  border-left: 0px !important;
+}
+
+/* top page */
+
+.rotate-u {
+  transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+}
+
+.rotate-d {
+  transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+}
+
+.mt {
+  margin-top: 100px;
+}
+
+.mt2 {
+  margin-top: 70px;
 }
