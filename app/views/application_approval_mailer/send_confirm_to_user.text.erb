@@ -1,0 +1,7 @@
+<%= @guide.name %> 様
+
+○○へお申し込みメールが送信されました。
+マイページはこちら
+<%= user_url(@guide) %>
+
+<%= edit_plan_request_url(@request.plan.id, @request.id, protocol: 'https') %>

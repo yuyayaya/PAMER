@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get '/plans', to: 'plans#plan_index'
   resources :rooms, only: [:show, :index, :create]
   resources :plans do
-    resources :requests, only: :create
+    resources :requests, only: [:create, :edit]
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create]
   end
