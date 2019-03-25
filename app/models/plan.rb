@@ -1,11 +1,14 @@
 class Plan < ApplicationRecord
   mount_uploader :image, PictureUploader
   belongs_to :user
+  has_many :likes
+  has_many :liked_users, through: :likes, source: :user
+  has_many :comments
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 40 }
   validates :tag, presence: true
-  validates :content, presence: true, length: { maximum: 140 }
+  validates :content, presence: true, length: { maximum: 1000 }
   validates :image, presence: true
 
   def self.search(search) #ここでのself.はPlan.を意味する

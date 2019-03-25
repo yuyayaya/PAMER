@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
   <div class="row">
     <div class="col-md-6">
       <%= image_tag @user.picture.url, class: "h-auto w-auto d-block mx-auto" %>
@@ -68,4 +68,36 @@
 
     </div>
   </div>
+<div class="dropdown-divider"></div>
+<h4 class="font-italic mt-5 mb-5 text-center">Like Plans</h4>
+<ul class="plans">
+  <div class="row">
+  <% @user.liked_plans.each do |plan| %>
+  <div class="col-6 col-md-4 mt-4">
+    <div class="card">
+      <%= link_to image_tag(plan.image, class: "card-img-top", height: "241.5", alt: "サンプル画像"),
+          user_plan_path(plan.user_id, plan.id) %>
+      <div class="card-body">
+      <div class="card-title"><%= plan.name %><%= link_to "more detail", user_plan_path(plan.user_id, plan.id),
+          class:"float-right btn btn-sm btn-primary mt-n1" %></div>
+      <div class="card-text">
+        <div class="row">
+          <div class="col-md-7">
+            <%= plan.tag %>
+          </div>
+          <div class="col-md-5">
+            <% if current_user&.id == plan.user.id %>
+              <%= link_to 'Edit', edit_user_plan_path(@user.id, plan.id) %>
+              <%= link_to 'Destroy', user_plan_path(@user.id, plan.id), method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  </div>
+</ul>
 </div>

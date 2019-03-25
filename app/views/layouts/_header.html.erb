@@ -7,12 +7,37 @@
         <% if user_signed_in? & !current_user&.guide %>
           <li class="nav-item"><%= link_to "Make Plan", new_user_plan_path(current_user.id), class: "nav-link" %></li>
         <% end %>
-        <% if user_signed_in? & current_user&.guide %>
-          <li class="nav-item"><%= link_to "Apply", "#", class: "nav-link" %></li>
-        <% end %>
         <li class="nav-item"><%= link_to "Plans", plans_path, class: "nav-link" %></li>
         <li class="nav-item"><%= link_to "Guides", users_path, class: "nav-link" %></li>
         <% if user_signed_in? %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+            Chat with <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu chat-dropdown user-dropdown-menu">
+            <% if current_user.guide %> <%# 旅行者のとき %>
+              <% @requests = current_user.active_requests.where(approved: true) %>
+            <% else %>  <%# ガイドのとき %>
+              <% @requests = current_user.passive_requests.where(approved: true) %>
+            <% end %>
+            <% @requests.each do |request| %>
+              <% if current_user.guide %> <%# 旅行者のとき %>
+                <% user = request.guide %>
+              <% else %> <%# ガイドのとき %>
+                <% user = request.tourist %>
+              <% end %>
+              <li class="row mb-2 mx-sm-1">
+                <div class="col-md-3">
+                  <%= link_to image_tag(user.picture.url, width: "35", height: "35",
+                      class: "chat-img rounded-circle"), room_path(user.id) %>
+                </div>
+                <div class="col-md-8 ml-2">
+                  <h7><%= link_to user.name, room_path(user.id) %></h7>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
               Account <b class="caret"></b>

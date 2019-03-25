@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   scope :guides, -> { where(guide: false) }
   has_many :plans, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_plans, through: :likes, source: :plan
+  has_many :comments
   has_many :from_messages, class_name: "Message",
           foreign_key: "from_id", dependent: :destroy
   has_many :to_messages, class_name: "Message",
@@ -10,12 +13,12 @@ class User < ApplicationRecord
   has_many :active_requests, class_name:  "Request",
                                   foreign_key: "tourist_id",
                                   dependent:   :destroy
-  has_many :passive_requsts, class_name:  "Request",
+  has_many :passive_requests, class_name:  "Request",
                                    foreign_key: "guide_id",
                                    dependent:   :destroy
   has_many :guides, through: :active_requests, source: :guide
   has_many :tourists, through: :passive_requests, source: :tourist
-  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -32,6 +35,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }, allow_nil: true
   mount_uploader :picture, PictureUploader
+  mount_uploader :certification, PictureUploader
   validates :picture, presence: true
 
   # userがいなければfacebookアカウントでuserを作成するメソッド
@@ -59,7 +63,12 @@ class User < ApplicationRecord
   def remember_me
     true
   end
-  
+
+  # ユーザーが投稿に対して、すでにいいねをしているのかどうか
+  def already_liked?(plan)
+    self.likes.exists?(plan_id: plan.id)
+  end
+
     # ガイドに申し込み
   # def apply(guide_user)
   #   self.guides << guide_user

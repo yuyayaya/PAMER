@@ -1,4 +1,5 @@
 class PlansController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :show, :edit, :destroy, :create, :update]
 
   def index
     @user = User.find(params[:user_id])
@@ -17,6 +18,9 @@ class PlansController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @plan = @user.plans.find(params[:id])
+    @like = Like.new
+    @comments = @plan.comments
+    @comment = Comment.new
   end
 
   def new

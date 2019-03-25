@@ -119,6 +119,11 @@ input {
 
 /* chat */
 
+div.chat-user {
+  height: 400px;
+  overflow: scroll;
+}
+
 section.message_box {
   padding: 10px;
   border: 1px solid #eee;
@@ -175,7 +180,7 @@ div.message_form {
 }
 
 .font-message-size {
-  font-size: 1px;
+  font-size: 3px;
 }
 
 .border-none td {
@@ -204,4 +209,13 @@ div.message_form {
 
 .mt2 {
   margin-top: 70px;
+}
+
+.mt3 {
+  margin-top: 80px;
+}
+
+.chat-dropdown {
+  height: 200px;
+  overflow: scroll;
 }

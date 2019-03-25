@@ -5,5 +5,6 @@ class AddFieldsToUser < ActiveRecord::Migration[5.1]
     add_column :users, :provider, :string
     add_column :users, :uid, :string
     add_column :users, :image, :string
+    add_column :users, :certification, :string
   end
 end
