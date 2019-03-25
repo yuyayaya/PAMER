@@ -1,0 +1,10 @@
+<h1>PAMER ガイド申し込み</h1>
+
+<p>こんにちは <%= @guide.name %>,さん</p>
+
+<p>
+あなたのプランが申し込まれました。下記の承認リンクからチャットを始めてください。
+</p>
+
+ <%= link_to edit_plan_request_url(@request.plan.id, @request.id, protocol: 'https'), edit_plan_request_url(@request.plan.id, @request.id, protocol: 'https') %>
+ <%= link_to "ルートパス", root_url %>

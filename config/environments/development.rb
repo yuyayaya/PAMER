@@ -55,13 +55,16 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: "#{ENV['HOST']}" }
   # mail setting
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
+   config.action_mailer.delivery_method = :smtp
+   config.action_mailer.smtp_settings = {
     :address => ENV['SMTP'],
     :port => '587',
     :user_name => ENV['USER_NAME'],
     :password => ENV['PASSWORD'],
     :authentication => :login,
     :enable_starttls_auto => true
-  }
+   }
+  # config.action_mailer.delivery_method = :test
+  # host = '405780c3fc5a426aa317dcac083a252d.vfs.cloud9.us-east-2.amazonaws.com'
+  # config.action_mailer.default_url_options = { host: host, protocol: 'https' }
 end
