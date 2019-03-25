@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#delete'
   resources :users, only: [:show, :index] do
-    resources :plans 
+    resources :plans
     post '/create', to: 'plans#create'
   end
   get '/profile_edit', to: 'users#profile_edit'
@@ -21,5 +21,7 @@ Rails.application.routes.draw do
   resources :rooms, only: [:show, :index, :create]
   resources :plans do
     resources :requests, only: :create
+    resources :likes, only: [:create, :destroy]
+    resources :comments, only: [:create]
   end
 end

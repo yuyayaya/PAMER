@@ -1,5 +1,7 @@
 class RequestsController < ApplicationController
-  
+  before_action :authenticate_user!
+  before_action :verify_tourist
+
   def create
     @guide = User.find(params[:guide_id])
     @plan = Plan.find(params[:plan_id])
@@ -10,15 +12,16 @@ class RequestsController < ApplicationController
       redirect_to user_plan_path(@guide, @plan), alert: "Somethig went wrong"
     end
   end
-  
+
   private
-  def requests_params
-    params.permit(:guide_id, :plan_id)
-  end
-   
-  # def verify_tourist
-  #   if current_user.guide
-  #     redirect_to root_path, notice: "ガイド登録者は申し込みができません。"
-  #   end
-  # end
+
+    def requests_params
+      params.permit(:guide_id, :plan_id)
+    end
+
+    def verify_tourist
+      if !current_user.guide
+        redirect_to root_path, notice: "ガイド登録者は申し込みができません。"
+      end
+    end
 end

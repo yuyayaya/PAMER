@@ -51,14 +51,31 @@ p {
 /* landing_page */
 
 .lp-background {
-  background: #151515 url("kite.jpg") no-repeat fixed left bottom;
+  background: #151515 url("back.jpg") no-repeat fixed left bottom;
   background-size: cover;
   text-align: center;
   font-family:  Raleway, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
 }
 
+h1.font-weight-bold {
+  font-size: 50px;
+}
+
+h2.font-italic {
+  font-size: 35px;
+}
+
+.shadow {
+  filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.8));
+}
+
+// .bg-mask {
+//   height: 100%;
+//   background: rgba(255,255,255,0.5);
+// }
+
 #top {
-  padding: 200px 0 360px 0;
+  padding: 250px 0 310px 0;
 }
 
 #genre {
@@ -70,7 +87,6 @@ p {
   padding: 150px 0;
   background-color: #383634;
 }
-
 
 #method {
   padding: 150px 0;
